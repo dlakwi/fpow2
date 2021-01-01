@@ -36,7 +36,6 @@ float large_integer = 0x00C00000;  // 3 << 22
 
 /////////////////////////////////////////////////////////////////////////////////////
 // fast 2^x
-// ATTENTION: need to compile with g++ -fno-strict-aliasing when using -O2 or -O3!!!
 // Relative deviation < 1.5E-4
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -51,7 +50,7 @@ float fpow2( float x )
   int32_t  lx = *( (int32_t*)&tx ) - 0x4b400000;  // integer value of x
   float    dx = x - (float)( lx );                // float remainder of x
 
-  // cubic apporoximation of 2^x for x in the range [0, 1]
+  // cubic approximation of 2^x for x in the range [0, 1]
   x = 1.0f + dx * ( 0.6960656421638072f
                     + dx * ( 0.224494337302845f
                              + dx * ( 0.07944023841053369f ) ) );
